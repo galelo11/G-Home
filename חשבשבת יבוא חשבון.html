@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en"  >
+<head >
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body >
+    <div style="display:flex;flex-flow:wrap;text-align: center;" class="main">
+    <div>
+        <h3>מפתח חשבון</h3>
+    <textarea  style="margin-right:5px;" id="a"  placeholder="2000"  name="" id="" cols="15" rows="20"></textarea>
+    </div>
+<div>
+    <h3>שם חשבון</h3>
+    <textarea style="margin-right:5px;" id="b"  placeholder="שם חשבון"  name="" id="" cols="50" rows="20"></textarea>
+</div>
+<div>
+    <h3>קוד מיון</h3>
+    <textarea style="margin-right:5px;" id="c"  placeholder="קוד מיון"  name="" id="" cols="15" rows="20"></textarea><br>
+</div>
+<div>
+    <h3>עוסק מורשאה</h3>
+    <textarea style="margin-right:5px;" id="d"  placeholder="עוסק מורשאה"  name="" id="" cols="15" rows="20"></textarea>
+</div>
+<div>
+    <h3>קוד מאזן</h3>
+        <textarea style="margin-right:5px;" id="e"  placeholder="ספקים"  name="" id="" cols="15" rows="20"></textarea><br>
+</div>
+<div>
+    <h3>חשבון ראשי</h3>
+    <textarea  dir="ltr" style="margin-right:5px;" id="f"  placeholder="ספקים"  name="" id="" cols="15" rows="20"></textarea><br>
+</div>
+</div><br>
+
+<textarea placeholder="Results" name="" id="Results" cols="115" rows="4"></textarea><br>
+<button id="mybtn">Convert and save</button><p style="color:red;">*change file type to ANSI</p>
+
+</body>
+
+<script>
+   
+   var getresults = document.getElementById("Results");
+document.getElementById("mybtn").addEventListener("click",function(){
+var a1 = document.getElementById("a").value.split(/\r?\n/)
+var b1= document.getElementById("b").value.split(/\r?\n/)
+var c1= document.getElementById("c").value.split(/\r?\n/)
+var d1 = document.getElementById("d").value.split(/\r?\n/)
+var e1 = document.getElementById("e").value.split(/\r?\n/)
+var f1 = document.getElementById("f").value.split(/\r?\n/)
+
+
+
+    // if (b1.length & c1.length & d1.length & e1.length& f1.length == a1.length  ){
+for (let i = 0; i < a1.length; i++) {
+    getresults.value += 
+    (a1[i].slice(0, 10)).padEnd(10, ' ') + 
+    (b1[i].slice(0, 15)).padEnd(15, ' ') + 
+    (c1[i].slice(0, 9)).padEnd(39, ' ') +
+    (d1[i].slice(0, 10)).padEnd(31, ' ') +
+    (d1[i].slice(0, 10)).padEnd(25, ' ') +             
+    (e1[i].slice(0, 21)).padEnd(21, ' ')+
+    (f1[i].slice(0, 21)).padEnd(19, ' ') + "\n" ;
+    }
+   download()
+     download1()
+// }else{
+//     alert("length not the same")
+// }
+
+
+
+})
+
+function download(){
+    var text =getresults.value;
+    text = text.replace(/\n/g, "\r\n"); // To retain the Line breaks.
+    var blob = new Blob([text], { type: "text/plain"});
+       var anchor = document.createElement("a");
+    anchor.download = "Heshin.dat";
+    anchor.href = window.URL.createObjectURL(blob);
+    anchor.click();
+ }
+
+
+
+ function download1(){
+    var garr 
+    var params = ["8", "1   10", "11   25", "26   34", "35   40", "41   41", "42   42", "43   43", "44   44", "45   45", "46   46", "47   47",
+                "48   48", "49   49", "50   50", "51   51", "52   52", "53   53", "54   54", "55   55", "56   56", "57   57", "58   58", "59   59", "60   60",
+                "61   61", "62   62", "63   63", "64   64", "65   74", "75   75", "76   76", "77   77", "78   78", "79   79", "80   80", "81   81", "82   82",
+                "83   83", "84   84", "85   85", "86   86", "87   87", "88   88", "89   89", "90   90", "91   91", "92   92", "93   93", "94   94", "95   95",
+                "96   105", "106   106", "107   107", "108   108", "109   109", "110   110", "111   111", "112   112", "113   113", "114   114", "115   115",
+                "116   116", "117   117", "118   118", "119   119", "120   120", "121   141", "142   162", "163   163", "164   164", "165   165", "166   166",
+                "167   167", "168   168", "169   169", "170   170", "171   171", "172   172", "173   173", "174   174", "175   175"]
+//        var params = ["8", "1   10", "11   40", "41   44", "45   50", "51   51", "52   52", "53   53", "54   54", "55   55", "56   56", "57   57",
+//                 "58   58", "59   59", "60   60", "61   61", "62   62", "63   63", "64   64", "65   65", "66   66", "67   67", "68   68", "69   69", "70   70",
+//                 "71   71", "72   72", "73   73", "74   74", "75   84", "85   85", "86   86", "87   87", "88   88", "89   89", "90   90", "91   91", "92   92",
+//                 "93   93", "94   94", "95   95", "96   96", "97   97", "98   98", "99   99", "100   100", "101   101", "102   102", "103   103", "104   104", "105   105",
+//                 "106   115", "116   116", "117   117", "118   118", "119   119", "120   120", "121   121", "122   122", "123   123", "124   124", "125   125",
+//                 "126   126", "127   127", "128   128", "129   129", "130   130", "131   151", "152   172", "173   173", "174   174", "175   175", "176   176",
+//                 "177   177", "178   178", "179   179", "180   180", "181   181", "182   182", "183   183", "184   184", "185   185"]
+
+          params.forEach(element => {
+              if(!garr){
+                garr = (element + "\n")    
+              }else{
+         garr += (element + "\n")
+        }
+          });
+   
+    garr = garr.replace(/\n/g, "\r\n"); // To retain the Line breaks.
+    var blob = new Blob([garr], { type: "text/plain"});
+    var anchor = document.createElement("a");
+    anchor.download = "HESHIN.PRM";
+    anchor.href = window.URL.createObjectURL(blob);
+    anchor.click();
+ }
+
+
+
+</script>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+</head>
+<body>
+
+<button onclick="myFunction()">Try it</button>
+<textarea id="txtarea" rows="8" cols="80">20190202	7	1500.20
+20190202	7	1500.20
+20190202	7	1500.20</textarea>
+
+
+<textarea id="txtarea1" rows="8" cols="80"></textarea>
+<script>
+
+function myFunction(){
+
+
+
+
+var lines = $('textarea').val().split('\n');  // split text
+  for(var i = 0;i < lines.length;i++){
+
+  var res = lines[i].split("	");
+
+var g00 = "A100000000001514868603117727158074000&OF1.31&     "; // once start
+var g01 = "Z900000000163514868603117727158074000&OF1.31&000000000000163                                                  "; // once end
+
+
+var g2 = "C100000000002514868603305";
+var g3 ="                                                                                                                                                                                                                              000000000";
+var g4 = "                  +";
+var g5 = "+00000000000000+";
+var g6 = "+00000000000000001                    ";
+
+// g2 + number + g3 + date + g4 + value + g5 + value +g5  + value  + g6 + date
+document.getElementById("txtarea1").innerHTML += (g2 + res[1].padStart(5, '0') +g3 + res[0] + g4+ res[2].padStart(15, '0') + g5 + res[2].padStart(15, '0') + g5 + res[2].padStart(15, '0')  + g6 + res[0]+ "      " +'\n');
+
+var myStr = document.getElementById("txtarea1").innerHTML; // remove the dot from value (15.20 to 1520)
+ 
+
+  }
+
+  document.getElementById("txtarea1").innerHTML = (g00 +'\n' + (myStr.replace(/\./g,''))  + g01  )
+
+
+}
+
+
+
+</script>
+
+</body>
+</html>

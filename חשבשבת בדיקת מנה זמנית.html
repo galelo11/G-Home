@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <link rel="stylesheet" href="style/style.css">
+    <title>HASH TO EXCEL</title>
+</head>
+<body dir="rtl" >
+    <p>input expected :</p>
+    <p>    1 חקש 2001 6003683 0 31/01/20 08/01/20 08/01/20 3510 8003 קניות מאזור $ 0.00 7,540.00 0.0000 <br>
+        2 חקש 2001 6003398 0 31/01/20 02/01/20 02/01/20 3511 8003 קניות מאזור $ 0.00 19,662.00 0.0000 <br>
+        3 חקש 2001 6004411 0 31/01/20 01/01/20 01/01/20 3512 8003 קניות מאזור $ 0.00 17,140.00 0.0000 <br>
+        4 חקש 2001 6004725 0 31/01/20 09/01/20 09/01/20 3513 8003 קניות מאזור $ 0.00 15,196.00 0.0000</p>
+<textarea name="" id="mytext" cols="150" rows="10"></textarea>
+    
+<button onclick="myfun()">split</button><br>
+<p>output expected number</p>
+<p>00,000.00</p>
+<textarea name="" id="mynewtext" cols="150" rows="20"></textarea>
+<P>
+    * USING : FROM AN OPEN MANA <br>
+     פ.נוספות >  הדפסת מנה בשיטה מקוצרת > לשמום ב PDF <br> ctrl a copy to excel <br>
+    *NOTE : REMOVE INCOME ? <br>
+    *NOTE : PDF MORE THAN ONE PAGE ?<br>
+    *NOTE : INCLUDE HOTS2A 7LKET FROM EXCEL ?<br>
+    </P>
+<script src="code/code.js"></script>
+
+
+<script>
+function myfun(){
+var g1 = document.getElementById("mytext"); // text area with the data
+var g2 = [];
+var g3 = document.getElementById("mynewtext"); //  empty text area
+
+g2 = (g1.value).split(/\n/);
+
+for (var index in g2){
+var indexofdollar = ((String(g2[index])).indexOf("$"));
+var slicetilldollar = ((g2[index]).slice(indexofdollar +6))
+g3.value +=  (String(slicetilldollar).replace("0.0000","")) +"\n" 
+
+}
+}
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- function myfun(){
+    var g1 = document.getElementById("mytext"); // text area with the data
+    var g2 = [];
+    var g3 = document.getElementById("mynewtext"); //  empty text area
+    var g4 = [];
+    
+    g2 = (g1.value).split(/\n/); // split by new line
+    for (var eachline in g2){
+    g3.value += "\n"+ String(g2[eachline]).slice(72);
+    
+    }
+    } -->

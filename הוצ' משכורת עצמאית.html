@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        *{
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: large;
+        padding: 0px;
+ 
+        }
+
+        body{
+        width: 80vw;   
+        margin-left: auto;
+        margin-right: auto;
+        }
+
+        button,textarea{
+        width: 100%;
+        }
+        button{
+        width: 100%;
+        height:20 ;
+        }
+
+    </style>
+</head>
+<body>
+<input id="year" type="text" placeholder="שנה" value="2020">
+<input id="maskoret" type="text" placeholder="Salary Account #">
+<input id="insurance" type="text" placeholder="Insurance  Account #"><br><br>
+
+    <textarea name="" id="textarea" cols="150" rows="4" placeholder="Expected Input : 
+6,218	6,218	7,254	5,182	5,700	7,254	6,736	6,736	6,736	6,218	6,736	7,254
+221	221	258	184	202	258	239	239	239	221	239	258"></textarea><br>
+    <textarea name="" id="results" cols="150" rows="4"></textarea><br>
+<button onclick="split()">convert and save</button>
+
+    <script>
+
+
+function split(){
+
+    var a1 = `<ROW MANA="20181002T08:52:78500" Reference="0" Tnua_date="`
+    ga = document.getElementById("year").value
+    datearr = ["0131","0228","0330","0430","0530","0630","0730","0830","0930","1030","1130","1230"]
+
+var  a2 = `" Tnua_tt="+" Seif_Number="`
+gb = document.getElementById("maskoret").value
+gc = document.getElementById("insurance").value
+
+
+var a3 = ` Nb_Brutto=0" Neto="`
+var a4 = `" Maam="0" Brutto="`
+var a5= `" Nb="0" Pratim="הוצ' משכורת"/>`
+
+
+
+var results = document.getElementById("results")
+results.innerHTML = ""
+  var g2 = document.getElementById("textarea").value.split(/\r?\n/)
+g3 = g2[0].split("	")
+g4 = g2[1].split("	")
+console.log(g3,g4)
+var gcount = 0
+g3.forEach(element => {
+        results.innerHTML += (a1 +ga+datearr[gcount] + a2 + gb+ a3+(element.replace(",","")) + a4+ (element.replace(",","")) + a5) + "\n"
+    results.innerHTML +=(a1 +ga+datearr[gcount] + a2 + gc+ a3+g4[g3.indexOf(element)].replace(",","") + a4+ g4[g3.indexOf(element)].replace(",","") + a5) + "\n"
+gcount++
+});
+
+
+    var text = document.getElementById("results").value;
+    text = text.replace(/\n/g, "\r\n"); // To retain the Line breaks.
+    var blob = new Blob([text], { type: "text/plain"});
+    var anchor = document.createElement("a");
+    anchor.download = "AzExpSh.dat";
+    anchor.href = window.URL.createObjectURL(blob);
+    anchor.click();
+}
+    </script>
+    
+</body>
+</html>
+
+
+

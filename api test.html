@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+
+        }
+
+        table,
+
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th {
+            background-color: rgb(4, 170, 109);
+            color: white;
+            border: 1px solid black;
+            padding-left: 5px;
+            padding-right: 5px;
+            height: 30px;
+        }
+    </style>
+</head>
+
+<body dir="rtl">
+    <div id="רשם התאגדות">
+        <h1>מאגר חברות - רשם החברות</h1>
+        <input type="text" name="" id="myinput" value="חברת סופי">
+        <button onclick="search()">Search</button>
+
+        <table class="table-layout: auto;" id="mytable">
+            <tr>
+                <!-- <th>ID</th> -->
+                <th>מספר חברה</th>
+                <th>שם חברה</th>
+                <!-- <th>שם באנגלית</th> -->
+                <!-- <th>סוג תאגיד</th> -->
+                <th>סטטוס חברה</th>
+                <!-- <th>תאור חברה</th> -->
+                <th>תאריך התאגדות</th>
+                <!-- <th>חברה ממשלתית</th> -->
+                <th>מגבלות</th>
+                <th>מפרה</th>
+                <th>דוח שנתי (שהוגש)</th>
+                <th>שם עיר</th>
+                <th>שם רחוב</th>
+                <!-- <th>מספר בית</th>
+                <th>מיקוד</th> -->
+                <!-- <th>ת.ד.</th>
+                <th>מדינה</th>
+                <th>אצל</th>
+                <th>תת סטטוס</th> -->
+            </tr>
+
+        </table>
+    </div>
+    <hr>
+    <div>
+
+        <h1>רכבים מעל 3.5 טון</h1>
+        <input type="text" name="" id="myinput2" value="">
+        <button onclick="searchCar()">Search</button>
+
+        <table class="table-layout: auto;" id="mytable2">
+            <tr>
+                <!-- <th>id</th> -->
+                <th>מספר רכב</th>
+                <th>מספר שילדה</th>
+                <th>תקינה</th>
+                <th>שנת יצור</th>
+                <th>תצורת 1</th>
+                <th>תצורת 2</th>
+                <th>תצורת ארץ</th>
+                <th>דלק 2</th>
+                <th>דלק 1</th>
+                <th>משקל כולל</th>
+                <th>משקל עצמי</th>
+                <th>דגם</th>
+            </tr>
+
+        </table>
+    </div>
+    <hr>
+    <div>
+
+        <h1>תוצרים ודגמים של כלי רכב</h1>
+        <input type="text" name="" id="myinput3" value="BK14Z">
+        <button onclick="searchCar1()">Search</button>
+        <table class="table-layout: auto;">
+            <tr id="title3"> </tr>
+            <tbody id="title4"></tbody>
+        </table>
+    </div>
+
+    <hr>
+
+    <div>
+
+        <h1>מאגר רכבים פרטיים ומסחריים</h1>
+        <input type="text" name="" id="myinput4" value="5299758">
+        <button id="search6" onclick="searchCar2()">Search</button>
+        <table class="table-layout: auto;">
+            <tr id="A6"> </tr>
+            <tbody id="B6"></tbody>
+
+        </table>
+    </div>
+    <hr>
+</body>
+
+
+
+<script>
+    var Car3Title = ["סוג דגם", "תצורת א", "תצורת ב", "תצורת ארץ", "תוצר", "דגם א", "דגם ב", "שנת יצור", "נפח", "משקל כולל", "hanaa_nm", "merkav", "רמת גימור", "דלק א", "קוח", "כינוי מסחרי"]
+    var Car3 = ["sug_degem", "tozeret_cd", "tozeret_nm", "tozeret_eretz_nm", "tozar", "degem_cd", "degem_nm", "shnat_yitzur", "nefah_manoa", "mishkal_kolel", "hanaa_nm", "merkav", "ramat_gimur", "delek_nm", "koah_sus", "kinuy_mishari"]
+
+    var Car6Title = ["מספר רכב", "סוג דגם", "תצורת א", "דגם", "רמת גימור", "שנת יצור", "מנוע", "מבחן אחרון", "תוקף", "בעלות", "מסגרת", "צבע", "צמיג קדמי", "צמיג אחרוי", "דלק א", "כינוי מסחרי"]
+    var Car6 = ["mispar_rechev", "sug_degem", "tozeret_nm", "degem_nm", "ramat_gimur", "shnat_yitzur", "degem_manoa", "mivchan_acharon_dt", "tokef_dt", "baalut", "misgeret", "tzeva_rechev", "zmig_kidmi", "zmig_ahori", "sug_delek_nm", "kinuy_mishari"]
+
+    var Switch1 = 0;
+    window.onload = (CreateTitle(), CreateTitle1())
+    var button6 = document.getElementById("search6")
+
+
+    function search() {
+        g1 = document.getElementById("myinput").value
+        fetch('https://data.gov.il/api/3/action/datastore_search?q=' + g1 + '&resource_id=f004176c-b85f-4542-8901-7b3176f9a054')
+            .then(response => response.json())
+            .then(data => mydata(data))
+    }
+    function mydata(data) {
+        mytable = document.getElementById("mytable")
+        data.result.records.forEach(item => {
+            mytable.innerHTML += (
+                "<tr>" +
+                // "<td>" + item._id + "</td>" +
+                "<td>" + item["מספר חברה"] + "</td>" +
+                "<td>" + (item["שם חברה"]).replace("~", '"') + "</td>" +
+                // "<td>" + item["שם באנגלית"] + "</td>" +
+                // "<td>" + item["סוג תאגיד"] + "</td>" +
+                "<td>" + item["סטטוס חברה"] + "</td>" +
+                // "<td>" + item["תאור חברה"] + "</td>" +
+                "<td>" + ((item["תאריך התאגדות"]).replace("T00:00:00", "")) + "</td>" +
+                // "<td>" + item["חברה ממשלתית"] + "</td>" +
+                "<td>" + item["מגבלות"] + "</td>" +
+                "<td>" + item["מפרה"] + "</td>" +
+                "<td>" + item["שנה אחרונה של דוח שנתי (שהוגש)"] + "</td>" +
+                "<td>" + item["שם עיר"] + "</td>" +
+                "<td>" + item["שם רחוב"] + "</td>" +
+                // "<td>" + item["מספר בית"] + "</td>" +
+                // "<td>" + item["מיקוד"] + "</td>" +
+                // "<td>" + item["ת.ד."] + "</td>" +
+                // "<td>" + item["מדינה"] + "</td>" +
+                // "<td>" + item["אצל"] + "</td>" +
+                // "<td>" + item["תת סטטוס"] + "</td>" +
+                "</tr>"
+            )
+        })
+
+    }
+
+
+    function searchCar() {
+        SearchCar = document.getElementById("myinput2").value
+        fetch('https://data.gov.il/api/3/action/datastore_search?q=' + SearchCar + '&resource_id=cd3acc5c-03c3-4c89-9c54-d40f93c0d790')
+            .then(response => response.json())
+            .then(data => mydata2(data))
+    }
+    function mydata2(data) {
+        mytable = document.getElementById("mytable2")
+        data.result.records.forEach(item => {
+            mytable.innerHTML += (
+                "<tr>" +
+                // "<td>" + item._id + "</td>" +
+                "<td>" + item["mispar_rechev"] + "</td>" +
+                "<td>" + item["mispar_shilda"] + "</td>" +
+                "<td>" + item["tkina_EU"] + "</td>" +
+                "<td>" + item["shnat_yitzur"] + "</td>" +
+                "<td>" + item["tozeret_cd"] + "</td>" +
+                "<td>" + item["tozeret_nm"] + "</td>" +
+                "<td>" + item["tozeret_eretz_nm"] + "</td>" +
+                "<td>" + item["sug_delek_cd"] + "</td>" +
+                "<td>" + item["sug_delek_nm"] + "</td>" +
+                "<td>" + item["mishkal_kolel"] + "</td>" +
+                "<td>" + item["mishkal_azmi"] + "</td>" +
+                "<td>" + item["degem_nm"] + "</td></tr>"
+            )
+        })
+
+    }
+
+
+    function searchCar1() {
+        SearchCar = document.getElementById("myinput3").value
+        fetch('https://data.gov.il/api/3/action/datastore_search?q=' + SearchCar + '&resource_id=142afde2-6228-49f9-8a29-9b6c3a0cbe40')
+            .then(response => response.json())
+            .then(data => GetData(data))
+    }
+    function CreateTitle() {
+        g1 = document.getElementById("title3")
+        Car3Title.forEach(element => {
+            g1.innerHTML += "<th>" + element + "</th>"
+        });
+    }
+    function GetData(data) {
+        tbodyRef = document.getElementById("title4")
+        data.result.records.forEach(element => {
+            var newRow = tbodyRef.insertRow();
+            Car3.forEach(item => {
+                var newCell = newRow.insertCell();
+                var newText = document.createTextNode(element[item]);
+                newCell.appendChild(newText);
+
+            });
+
+        });
+
+    }
+
+    function searchCar2() {
+        button6.innerHTML = "Loading"
+        SearchCar = document.getElementById("myinput4").value
+        fetch('https://data.gov.il/api/3/action/datastore_search?q=' + SearchCar + ' &resource_id=053cea08-09bc-40ec-8f7a-156f0677aff3')
+            .then(response => response.json())
+            .then(data => GetData1(data))
+    }
+    function CreateTitle1() {
+        g1 = document.getElementById("A6")
+        Car6Title.forEach(element => {
+            g1.innerHTML += "<th>" + element + "</th>"
+        });
+    }
+    function GetData1(data) {
+        tbodyRef = document.getElementById("B6")
+        data.result.records.forEach(element => {
+            var newRow = tbodyRef.insertRow();
+            Car6.forEach(item => {
+                var newCell = newRow.insertCell();
+                var textreplace = element[item].toString().replace("T00:00:00", "")
+                var newText = document.createTextNode(textreplace);
+
+                newCell.appendChild(newText);
+
+            });
+
+        });
+        button6.innerHTML = "Ready"
+    }
+</script>
+
+</html>

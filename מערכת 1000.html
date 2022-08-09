@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <textarea id="txtarea" rows="8" cols="80"></textarea>
+  <textarea id="txtarea1" rows="8" cols="80"></textarea>
+<button onclick="myFunction()">Try it</button>
+<button type="button" onclick="download()">Save</button>
+  </head>
+  <body>
+    <script type="text/javascript">
+
+var g1 = document.getElementById("txtarea1");
+
+    function myFunction(){
+g1.innerHTML = "A945445203" + '\n';
+
+var lines = $('textarea').val().split('\n');  // split text
+  for(var i = 0;i < lines.length;i++){
+g1.innerHTML +=  "B           0000" +  lines[i].padStart(9, '0') + lines[i].padStart(9, '0')  +'\n'  ;
+}
+
+var g = (lines.length + '').padStart(4, '0'); // the '' seems to be very important for this to work
+g1.innerHTML += "Z945445203" + g;
+}
+
+
+
+function download(){
+    var text = document.getElementById("txtarea1").value;
+    text = text.replace(/\n/g, "\r\n"); // To retain the Line breaks.
+    var blob = new Blob([text], { type: "text/plain"});
+    var anchor = document.createElement("a");
+    anchor.download = "G-checkEshor.dat";
+    anchor.href = window.URL.createObjectURL(blob);
+
+    anchor.click();
+
+ }
+        </script>
+  </body>
+</html>
