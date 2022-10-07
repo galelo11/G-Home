@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+        * {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            box-sizing: border-box;
+            margin: 0px;
+            
+        }
+
+        #flexContainer {
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 10px;
+            justify-content: center;
+            width: 100%;
+            padding: 15px;
+        }
+
+        .items {
+            display: inline-block;
+            width: 300px;
+
+        }
+
+        .items-container {
+            border: 1px solid black;
+        }
+
+        #options {
+            background-color: rgb(14, 13, 13);
+            text-align: center;
+            color: white;
+            font-size: x-large;
+
+        }
+
+        .car-name {
+            background-color: rgb(40, 40, 40);
+            text-align: center;
+            color: white;
+        }
+
+        button {
+            background-color: rgb(14, 13, 13);
+            color: white;
+            font-size: x-large;
+            border: 0px;
+        }
+
+        input {
+            font-size: x-large;
+            text-align: center;
+        }
+
+        .view0 {
+            display: none;
+        }
+
+        @media only screen and (max-width: 725px) {
+            #flexContainer {
+                width: 100%;
+                padding: 0px;
+            }
+        }
+    </style>
+</head>
+
+<body dir="rtl">
+
+    <div>
+        <div id="flexContainer">
+            <select name="options" id="options">
+            <option value="1">רכבים פרטיים ומסחריים</option>
+            <option value="2">רכבים מעל 3.5 טון</option>
+            <option value="3">לא פעילים</option>
+            <option value="6">תוצרים ודגמים של כלי רכב</option>
+            <option value="8">רכב דו גלגליים</option>
+            <option value="9">תג חניה לנכה</option>
+            <option value="5">מאגר טיסות</option>
+            <option value="4">רשימת החברות</option>
+            <option value="7">פרטי שינויים בתאגידים</option>
+                 </select>
+            <!-- <h1> רכב פרטי ומסחרי</h1> -->
+     
+            <input type="text" name="" id="SearchVal" placeholder="Enter text"  >
+            <button id="search1" onclick="search()">Search</button>
+        </div>
+    </div>
+</body>
+
+
+
+<script>
+   
+    //var g1 = document.getElementById("flexContainer")
+
+   // var button1 = document.getElementById("search1")
+
+
+    function search() {
+        select = document.getElementById("options").value
+        if(select == 1){
+          var eng = ["mispar_rechev", "sug_degem", "tozeret_nm", "degem_nm", "ramat_gimur", "shnat_yitzur", "degem_manoa", "mivchan_acharon_dt", "tokef_dt", "baalut", "misgeret", "tzeva_rechev", "zmig_kidmi", "zmig_ahori", "sug_delek_nm", "kinuy_mishari"]
+          var heb = ["מס' רכב", "סוג גדם", "שם תוצר", "מס' דגם", "רמת גימור", "שנת יצור", "דגם מנוע", "מבחן אחרון", "תוקף", "בעלות", "מסגרת", "צבע", "צמיג קדמי", "צמיג אחורי", "סוג דלק", "קינוי מסחרי"]
+         var FetchLink = '&resource_id=053cea08-09bc-40ec-8f7a-156f0677aff3&limit=5'
+        } if(select == 2){
+        var eng = ["degem_manoa","degem_nm","hanaa_cd","hanaa_nm","horaat_rishum","kvutzat_sug_rechev","mishkal_azmi","mishkal_kolel","mishkal_mitan_harama","mispar_mekomot","mispar_mekomot_leyd_nahag","mispar_rechev","mispar_shilda","moed_aliya_lakvish","nefach_manoa","rank","shnat_yitzur","sug_delek_cd","sug_delek_nm","tkina_EU","tozeret_cd","tozeret_eretz_nm","tozeret_nm","_id"]
+        var heb = ["דגם מנוע","דגם נמ","דגם כד","הנאה נמ","הוראות רישיום","קבוצת סוג רכב","משקל עצמי","משקל כולל","משקל מתן הרמה","מס' מקומות","מס'  מקומות ליד נהג","מס' רכב","מס' שלדה","מועד עליה לקביש","נפח מנוע","ראנק","שנת יצור","סוג דלק כד","סוג דלק נמ","תקינה EU","תצורת כד","תצורת ארץ נמ","תצורת נמ","אי.די"]
+        var FetchLink = '&resource_id=cd3acc5c-03c3-4c89-9c54-d40f93c0d790'
+    } if(select == 3){
+        var eng = ["mispar_rechev","tozeret_cd","sug_degem","tozeret_nm","degem_cd","degem_nm","ramat_gimur","ramat_eivzur_betihuty","kvutzat_zihum","shnat_yitzur","degem_manoa","mivchan_acharon_dt","tokef_dt","baalut","misgeret","tzeva_cd","tzeva_rechev","zmig_kidmi","zmig_ahori","sug_delek_nm","horaat_rishum","moed_aliya_lakvish","kinuy_mishari"]
+        var heb = ["mispar_rechev","tozeret_cd","sug_degem","tozeret_nm","degem_cd","degem_nm","ramat_gimur","ramat_eivzur_betihuty","kvutzat_zihum","shnat_yitzur","degem_manoa","mivchan_acharon_dt","tokef_dt","baalut","misgeret","tzeva_cd","tzeva_rechev","zmig_kidmi","zmig_ahori","sug_delek_nm","horaat_rishum","moed_aliya_lakvish","kinuy_mishari"]
+        var FetchLink = '&resource_id=f6efe89a-fb3d-43a4-bb61-9bf12a9b9099&limit=5'
+    } if(select == 4){
+        var eng =["מספר חברה","שם חברה","שם באנגלית","סוג תאגיד","סטטוס חברה","תאור חברה","מטרת החברה","תאריך התאגדות","חברה ממשלתית","מגבלות","מפרה","שנה אחרונה של דוח שנתי (שהוגש)","שם עיר","שם רחוב","מספר בית","מיקוד","ת.ד.","מדינה","אצל","תת סטטוס"]
+        var heb = ["מספר חברה","שם חברה","שם באנגלית","סוג תאגיד","סטטוס חברה","תאור חברה","מטרת החברה","תאריך התאגדות","חברה ממשלתית","מגבלות","מפרה","שנה אחרונה של דוח שנתי (שהוגש)","שם עיר","שם רחוב","מספר בית","מיקוד","ת.ד.","מדינה","אצל","תת סטטוס"]
+        var FetchLink = '&resource_id=f004176c-b85f-4542-8901-7b3176f9a054&limit=5'
+    } if(select == 5){
+        var eng =["CHOPER","CHFLTN","CHOPERD","CHSTOL","CHPTOL","CHAORD","CHLOC1","CHLOC1D","CHLOC1TH","CHLOC1T","CHLOC1CH","CHLOCCT","CHTERM","CHCINT","CHCKZN","CHRMINE","CHRMINH"]
+        var heb = ["CHOPER","CHFLTN","CHOPERD","CHSTOL","CHPTOL","CHAORD","CHLOC1","CHLOC1D","CHLOC1TH","CHLOC1T","CHLOC1CH","CHLOCCT","CHTERM","CHCINT","CHCKZN","CHRMINE","CHRMINH"]
+        var FetchLink = '&resource_id=e83f763b-b7d7-479e-b172-ae981ddc6de5&limit=5'
+    }if(select == 6){
+        var eng =["sug_degem","tozeret_cd","tozeret_nm","tozeret_eretz_nm","tozar","degem_cd","degem_nm","shnat_yitzur","kvuzat_agra_cd","nefah_manoa","mishkal_kolel","gova","hanaa_cd","hanaa_nm","mazgan_ind","abs_ind","kariot_avir_source","mispar_kariot_avir","hege_koah_ind","automatic_ind","halonot_hashmal_source","mispar_halonot_hashmal","halon_bagg_ind","galgaley_sagsoget_kala_ind","argaz_ind","merkav","ramat_gimur","delek_cd","delek_nm","mispar_dlatot","koah_sus","mispar_moshavim","bakarat_yatzivut_ind","kosher_grira_im_blamim","kosher_grira_bli_blamim","sug_tkina_cd","sug_tkina_nm","sug_mamir_cd","sug_mamir_nm","technologiat_hanaa_cd","technologiat_hanaa_nm","kamut_CO2","kamut_NOX","kamut_PM10","kamut_HC","kamut_HC_NOX","kamut_CO","kamut_CO2_city","kamut_NOX_city","kamut_PM10_city","kamut_HC_city","kamut_CO_city","kamut_CO2_hway","kamut_NOX_hway","kamut_PM10_hway","kamut_HC_hway","kamut_CO_hway","madad_yarok","kvutzat_zihum","bakarat_stiya_menativ_ind","bakarat_stiya_menativ_makor_hatkana","nitur_merhak_milfanim_ind","nitur_merhak_milfanim_makor_hatkana","zihuy_beshetah_nistar_ind","bakarat_shyut_adaptivit_ind","zihuy_holchey_regel_ind","zihuy_holchey_regel_makor_hatkana","maarechet_ezer_labalam_ind","matzlemat_reverse_ind","hayshaney_lahatz_avir_batzmigim_ind","hayshaney_hagorot_ind","nikud_betihut","ramat_eivzur_betihuty","teura_automatit_benesiya_kadima_ind","shlita_automatit_beorot_gvohim_ind","shlita_automatit_beorot_gvohim_makor_hatkana","zihuy_matzav_hitkarvut_mesukenet_ind","zihuy_tamrurey_tnua_ind","zihuy_rechev_do_galgali","zihuy_tamrurey_tnua_makor_hatkana","CO2_WLTP","HC_WLTP","PM_WLTP","NOX_WLTP","CO_WLTP","CO2_WLTP_NEDC","bakarat_stiya_activ_s","blima_otomatit_nesia_leahor","bakarat_mehirut_isa","kinuy_mishari"]
+        var heb = ["sug_degem","tozeret_cd","tozeret_nm","tozeret_eretz_nm","tozar","degem_cd","degem_nm","shnat_yitzur","kvuzat_agra_cd","nefah_manoa","mishkal_kolel","gova","hanaa_cd","hanaa_nm","mazgan_ind","abs_ind","kariot_avir_source","mispar_kariot_avir","hege_koah_ind","automatic_ind","halonot_hashmal_source","mispar_halonot_hashmal","halon_bagg_ind","galgaley_sagsoget_kala_ind","argaz_ind","merkav","ramat_gimur","delek_cd","delek_nm","mispar_dlatot","koah_sus","mispar_moshavim","bakarat_yatzivut_ind","kosher_grira_im_blamim","kosher_grira_bli_blamim","sug_tkina_cd","sug_tkina_nm","sug_mamir_cd","sug_mamir_nm","technologiat_hanaa_cd","technologiat_hanaa_nm","kamut_CO2","kamut_NOX","kamut_PM10","kamut_HC","kamut_HC_NOX","kamut_CO","kamut_CO2_city","kamut_NOX_city","kamut_PM10_city","kamut_HC_city","kamut_CO_city","kamut_CO2_hway","kamut_NOX_hway","kamut_PM10_hway","kamut_HC_hway","kamut_CO_hway","madad_yarok","kvutzat_zihum","bakarat_stiya_menativ_ind","bakarat_stiya_menativ_makor_hatkana","nitur_merhak_milfanim_ind","nitur_merhak_milfanim_makor_hatkana","zihuy_beshetah_nistar_ind","bakarat_shyut_adaptivit_ind","zihuy_holchey_regel_ind","zihuy_holchey_regel_makor_hatkana","maarechet_ezer_labalam_ind","matzlemat_reverse_ind","hayshaney_lahatz_avir_batzmigim_ind","hayshaney_hagorot_ind","nikud_betihut","ramat_eivzur_betihuty","teura_automatit_benesiya_kadima_ind","shlita_automatit_beorot_gvohim_ind","shlita_automatit_beorot_gvohim_makor_hatkana","zihuy_matzav_hitkarvut_mesukenet_ind","zihuy_tamrurey_tnua_ind","zihuy_rechev_do_galgali","zihuy_tamrurey_tnua_makor_hatkana","CO2_WLTP","HC_WLTP","PM_WLTP","NOX_WLTP","CO_WLTP","CO2_WLTP_NEDC","bakarat_stiya_activ_s","blima_otomatit_nesia_leahor","bakarat_mehirut_isa","kinuy_mishari"]
+        var FetchLink = '&resource_id=142afde2-6228-49f9-8a29-9b6c3a0cbe40&limit=5'
+    }
+    if(select == 7){
+        var eng =["מספר תאגיד","שם תאגיד","סוג בקשה","תאריך עדכון סטטוס"]
+        var heb = ["מספר תאגיד","שם תאגיד","סוג בקשה","תאריך עדכון סטטוס"]
+        var FetchLink = '&resource_id=28780ab5-3ef1-44c7-8377-da82c0aa6781&limit=5'
+    }    if(select == 8){
+        var eng =["mispar_rechev","tozeret_cd","tozeret_nm","tozeret_eretz_nm","degem_nm","shnat_yitzur","sug_delek_cd","sug_delek_nm","mishkal_kolel","mida_zmig_kidmi","mida_zmig_ahori","kod_omes_zmig_kidmi","kod_omes_zmig_ahori","kod_mehirut_zmig_kidmi","kod_mehirut_zmig_ahori","nefach_manoa","hespek","misgeret","moed_aliya_lakvish","sug_rechev_EU_cd","sug_rechev_cd","sug_rechev_nm","mispar_manoa","horaat_rishum","baalut","mkoriut_nm","mispar_mekomot_leyd_nahag","mispar_mekomot"]
+        var heb = ["mispar_rechev","tozeret_cd","tozeret_nm","tozeret_eretz_nm","degem_nm","shnat_yitzur","sug_delek_cd","sug_delek_nm","mishkal_kolel","mida_zmig_kidmi","mida_zmig_ahori","kod_omes_zmig_kidmi","kod_omes_zmig_ahori","kod_mehirut_zmig_kidmi","kod_mehirut_zmig_ahori","nefach_manoa","hespek","misgeret","moed_aliya_lakvish","sug_rechev_EU_cd","sug_rechev_cd","sug_rechev_nm","mispar_manoa","horaat_rishum","baalut","mkoriut_nm","mispar_mekomot_leyd_nahag","mispar_mekomot"]
+        var FetchLink = '&resource_id=bf9df4e2-d90d-4c0a-a400-19e15af8e95f&limit=5'
+    }    if(select == 9){
+        var eng =["MISPAR RECHEV","TAARICH HAFAKAT TAG","SUG TAV"]
+        var heb = ["MISPAR RECHEV","TAARICH HAFAKAT TAG","SUG TAV"]
+        var FetchLink = '&resource_id=c8b9f9c8-4612-4068-934f-d4acd2e3c06e&limit=5'
+    }    if(select == 0){
+        var eng =[]
+        var heb = []
+        var FetchLink = ''
+    }    if(select == 0){
+        var eng =[]
+        var heb = []
+        var FetchLink = ''
+    }
+    
+        searchVal = document.getElementById("SearchVal").value
+        fetch('https://data.gov.il/api/3/action/datastore_search?q='+ searchVal + FetchLink)
+            .then(response => response.json())
+            .then(data => GetData1(data,eng,heb))
+         
+    }
+
+    function GetData1(data,eng,heb) {
+
+        data.result.records.forEach(element => {
+         //   console.log(element)
+            var newdiv = document.createElement("div");
+         //   newdiv.innerHTML += "<h2 onclick='toggle()' class='title" + (data.result.records.indexOf(element)) + " car-name'>" + "רכב: " + (element[ENG1[0]]) + "-" + (element[ENG1[5]]) + "</h2>"
+            newdiv.classList = "items-container"
+            document.getElementById("flexContainer").appendChild(newdiv);
+            var newdiv1 = document.createElement("div");
+            newdiv1.classList = ("items" + data.result.records.indexOf(element))
+
+            eng.forEach(item => {
+                newdiv1.innerHTML += "<span style=' font-weight: 600;'>" + heb[eng.indexOf(item)] + "</span> : " + JSON.stringify(element[item]).replace("T00:00:00", "") + "<br>";
+
+            });
+
+            newdiv.appendChild(newdiv1);
+
+        });
+           }
+
+
+
+</script>
+
+</html>
