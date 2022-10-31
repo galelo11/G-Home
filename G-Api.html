@@ -80,6 +80,7 @@
             <select name="options" id="options">
             <option value="1">רכבים פרטיים ומסחריים</option>
             <option value="2">רכבים מעל 3.5 טון</option>
+            <option value="10">רכב שירדו מהכביש ובסטטוס ביטול סופי</option>
             <option value="3">לא פעילים</option>
             <option value="6">תוצרים ודגמים של כלי רכב</option>
             <option value="8">רכב דו גלגליים</option>
@@ -87,6 +88,7 @@
             <option value="5">מאגר טיסות</option>
             <option value="4">רשימת החברות</option>
             <option value="7">פרטי שינויים בתאגידים</option>
+        
                  </select>
             <!-- <h1> רכב פרטי ומסחרי</h1> -->
      
@@ -144,10 +146,10 @@
         var eng =["MISPAR RECHEV","TAARICH HAFAKAT TAG","SUG TAV"]
         var heb = ["MISPAR RECHEV","TAARICH HAFAKAT TAG","SUG TAV"]
         var FetchLink = '&resource_id=c8b9f9c8-4612-4068-934f-d4acd2e3c06e&limit=5'
-    }    if(select == 0){
-        var eng =[]
-        var heb = []
-        var FetchLink = ''
+    }    if(select == 10){
+        var eng =["mispar_rechev","tozeret_cd","tozeret_nm","degem_cd","degem_nm","sug_rechev_cd","sug_rechev_nm","moed_aliya_lakvish","bitul_dt","misgeret","tozar_manoa","degem_manoa","mispar_manoa","mishkal_kolel","ramat_gimur","ramat_eivzur_betihuty","kvutzat_zihum","shnat_yitzur","baalut","tzeva_rechev","zmig_kidmi","zmig_ahori","sug_delek_nm","horaat_rishum","kinuy_mishari"]
+        var heb = ["mispar_rechev","tozeret_cd","tozeret_nm","degem_cd","degem_nm","sug_rechev_cd","sug_rechev_nm","moed_aliya_lakvish","bitul_dt","misgeret","tozar_manoa","degem_manoa","mispar_manoa","mishkal_kolel","ramat_gimur","ramat_eivzur_betihuty","kvutzat_zihum","shnat_yitzur","baalut","tzeva_rechev","zmig_kidmi","zmig_ahori","sug_delek_nm","horaat_rishum","kinuy_mishari"]
+        var FetchLink = '&resource_id=851ecab1-0622-4dbe-a6c7-f950cf82abf9'
     }    if(select == 0){
         var eng =[]
         var heb = []
