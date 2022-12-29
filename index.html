@@ -11,13 +11,11 @@
     .g-cards{
 width:100%;
 }
-.g-search{
-    display:block;
-}
+
 }  
         *{
             margin: 0px;
-         font-family: 'Courier New', Courier, monospace;
+         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
         }
 body{
     padding: 10px;
@@ -28,10 +26,7 @@ body{
 width:24vw;
 }
 }
-.g-search{
-    display: none;
-}
-}
+
 
 .g-cards input{
     display:block;
@@ -47,7 +42,7 @@ width:24vw;
 
     color : rgba(255, 166, 0, 0.712);
    text-decoration: underline;
-    font-size: 35px;
+    font-size: 30px;
     text-align: center;
     padding: 10px;
 }
@@ -58,7 +53,7 @@ width:24vw;
     text-decoration: none;
     color : green;
     font-size: 25px;
-    font-weight: 700;
+   
 }
 .g-cards a:hover{
     
@@ -76,13 +71,7 @@ width:24vw;
 </head>
 <body>
 
- <div class = "g-search ">
-    <div class="g-cards">
-        <h1>SEARCH</h1>
-    <input type="text" name="" id="myinput" placeholder="Search"><br>
-    <div id="mytext"></div>
-</div>
-</div>
+ 
 
 <div id="flex">
 <div class="g-cards">
@@ -95,7 +84,6 @@ width:24vw;
 <h1>חשבשבת</h1>
 <a href="חשבשבת יבוא חשבון.html">יבוא חשבון</a>    
 <a href="מערכת 1000.html">מערכת 1000</a>  
-<a href="173 חסן חמדאן.html">173 חסן חמדאן</a>  
 <a href="חשבשבת בדיקת מנה זמנית.html">בדיקת מנה זמנית</a>  
 <a href="readpcn.html">READ PCN</a>  
 </div>
@@ -140,7 +128,7 @@ width:24vw;
     <a href="https://web.whatsapp.com">Whatsapp</a>
     <a href="https://online1.rivhit.co.il/loginmanager/login">Rivhit</a>
     <a href="https://shaam.taxes.gov.il/myz/pages/homepage.aspx">Main</a>
-        <a href="https://meyazegs.btl.gov.il">ביטוח לאומי מייצג</a>
+    <a href="https://meyazegs.btl.gov.il">ביטוח מייצג</a>
     </div>
 
     <div class="g-cards">
@@ -156,111 +144,3 @@ width:24vw;
 </div>
 </body>
 </html>
-
-<script>
-
-    const linkname = [
-    "הוצ' משכורת",  
-    "הכנסות פטורות",
-    "יבוא חשבון",    
-    "מערכת 1000",  
-    "173 חסן חמדאן",  
-    "בדיקת מנה זמנית",  
-    "READ PCN",  
-    "תשלום דוח מע''מ", 
-    "תשלום מקדמות",
-    "תשלום דוח ניכויים 102",
-    "תשלום שובר ביטוח לאומי עצמאי",
-    "תשלום שובר ביטוח עסקי",
-    "אישורי ניכוי  מס במקור",
-    "פרטי עוסק מורשה במע''מ",
-    "פרטי חברה",
-    " אזור אישי",
-    " בדיקה במרשם חייבים מוגבלים",
-    "בדיקת קובצ PCN",
-    "הפועלים עסקי",
-    "הפועלים פרטי",
-    "לאומי עסקי",
-    "AccountBook",
-    "G-Api",
-    "CombinePdf",
-    "סכום למילים",
-    "Whatsapp",
-    "Rivhit",
-    "Main",
-    "איתור דוחות חניה",
-    "איתור דוחות משטרה",
-    "מידע על סטטוס דבר הדואר",
-    "בירור הצהרת יבוא IMPORT",
-    "איתור רואי חשבון",
-    "איתור יועץ מס",
-    "תשלום ארנונה",
-    "תשלום מיסוי מקרקעין",
-    "תשלום במרכז לגביית קנסות",
-    "G-FileShare"
-    ];
-    const linkUrl = 
-    [
-        "הוצ' משכורת עצמאית.html",
-        "הכנסות פטורות עצמאית.html",
-        "חשבשבת יבוא חשבון.html",
-        "מערכת 1000.html",
-        "173 חסן חמדאן.html",
-        "חשבשבת בדיקת מנה זמנית.html",
-        "readpcn.html",
-        "https://www.misim.gov.il/EmHanPayment/HazanatPirteyTashlum.aspx?cur=1",
-        "https://www.misim.gov.il/gmmikdama/firstPage.aspx",
-        "https://secapp.taxes.gov.il/nikpay/#/Home",
-        "https://b2b.btl.gov.il/BTL.ILG.Payments/GalashForm.aspx",
-        "https://b2b.btl.gov.il/BTL.ILG.Payments/ChovMaasikForm.aspx",
-        "https://www.misim.gov.il/gmishurim/firstPage.aspx",
-        "https://www.misim.gov.il/emosek/wHzanatTik.aspx",
-        "https://ica.justice.gov.il/GenericCorporarionInfo/SearchCorporation?unit=8",
-        "https://secapp.taxes.gov.il/logon/LogonPoint/tmindex.html#/clientDashboard",
-        "https://www.gov.il/he/service/execution_debtors_check",
-        "https://www.misim.gov.il/EmDvhmfrt/wUploadFileHeshboniotSim.aspx",
-        "https://biz2.bankhapoalim.co.il/cgi-bin/poalwwwc?reqName=getLogonPageIski&site=accessible",
-        "https://www.bankhapoalim.co.il/he/login",
-        "https://hb2.bankleumi.co.il/H/Login.html",
-        "https://cloud.tamal.co.il",
-        "G-Api.html",
-        "https://combinepdf.com",
-        "https://www.checkprinting.co.il",
-        "https://web.whatsapp.com",
-        "https://online1.rivhit.co.il/loginmanager/login",
-        "https://shaam.taxes.gov.il/myz/pages/homepage.aspx",
-        "https://jerinfogen.jerusalem.muni.il/findreport/(S(aplo20x0tw1244a0c1khpp33))/default.aspx",
-        "https://ecom.gov.il/voucherspa/input/318",
-        "https://shaarolami-query.customs.mof.gov.il/CustomspilotWeb/he/CargoSearch",
-        "https://shaarolami-query.customs.mof.gov.il/CustomspilotWeb/he/UrlHash/DeclarationStatus",
-        "https://www.gov.il/he/Departments/DynamicCollectors/cpa-search?skip=0",
-        "https://www.tac.gov.il/Pages/SearchYoetz.aspx?",
-        "https://pay.jerusalem.muni.il/PaymentsApp/#/",
-        "https://www.gov.il/he/service/pay-land-property-taxes",
-        "https://www.gov.il/he/service/debt_payment_center_to_collect_fines_and_fees",
-        "http://g-fileshare.atwebpages.com"
-    ];
-    
-    var g1 = document.getElementById("myinput");
-    var g2 = document.getElementById("mytext");
-    
-    g1.onkeyup = function () {
-    
-          g2.innerHTML = "";
-          if (g1.value != ""){
-       
-    
-        linkname.forEach(function (item) {
-         
-            if (String(item).toLowerCase().indexOf(g1.value) !== -1) {
-                g2.innerHTML += '<p><a href="'+ linkUrl[linkname.indexOf(item)] + '">' +  item  + '</a></p>'+ '\n' ;
-             
-            }
-        
-        })
-    }
-    }
-        </script>
-
-
-
