@@ -1,19 +1,58 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+<style>
+*{
+    background-color: black;
+}
+button{
+    width: 50%;
+    background-color: orange;
+    height: 40px;
+    font-size: larger;
+}
+textarea{
+    color: white;
+    width: 50%;
+    padding: 0%;
+    margin: 0%;
+}
+h1{
+    width: 50%;
+text-align: center;
+font-size: xx-large;
+background-color: orange;
+}
+#txtarea1{
+    visibility: hidden;
+}
+#teknekoyem{
+    width: 50%;  
+    color: white;
+    font-size: large;
+    padding: 0%;
+    margin: 0%;
+    border: 0;
+    text-align: center;
+}
+
+</style>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-    <textarea id="txtarea" rows="8" cols="80"></textarea>
-  <textarea id="txtarea1" rows="8" cols="80"></textarea>
-<button onclick="myFunction()">Try it</button>
+    <h1>מערכת 1000</h1>
+    <input id="teknekoyem" type="text" placeholder="תיק ניכויים"><br>
+    <textarea id="txtarea" rows="30" cols="20"></textarea>
+  <textarea id="txtarea1" rows="1" cols="1"></textarea><br>
+<!-- <button onclick="myFunction()">Try it</button> -->
 <button type="button" onclick="download()">Save</button>
   </head>
   <body>
     <script type="text/javascript">
 
 var g1 = document.getElementById("txtarea1");
-
-    function myFunction(){
-g1.innerHTML = "A945445203" + '\n';
+var g2 = document.getElementById("teknekoyem");
+    function Convert(){
+g1.innerHTML = "A"+ g2.value + '\n';
 
 var lines = $('textarea').val().split('\n');  // split text
   for(var i = 0;i < lines.length;i++){
@@ -27,6 +66,8 @@ g1.innerHTML += "Z945445203" + g;
 
 
 function download(){
+    if(g2.value != ""){
+    Convert();
     var text = document.getElementById("txtarea1").value;
     text = text.replace(/\n/g, "\r\n"); // To retain the Line breaks.
     var blob = new Blob([text], { type: "text/plain"});
@@ -35,7 +76,7 @@ function download(){
     anchor.href = window.URL.createObjectURL(blob);
 
     anchor.click();
-
+}
  }
         </script>
   </body>
