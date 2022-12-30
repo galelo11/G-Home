@@ -5,15 +5,45 @@
 
 
 </head>
+<style>
+*{
+    background-color: black;
+}
+button{
+    width: 50%;
+    background-color: orange;
+    height: 40px;
+    font-size: larger;
+    
+}
+textarea{
+    color: white;
+    width: 50%;
+    padding: 0%;
+    border-color: white;
+    margin: 0%;
+    border-width: 1px;
+    border-style: double;
+ 
+}
+h1{
+    width: 50%;
+text-align: center;
+font-size: xx-large;
+background-color: orange;
+}
+  
+</style>
 <body>
 
-<button onclick="myFunction()">Try it</button>
+<h1>הכנסות פטורות עצמאית</h1>
 <textarea id="txtarea" rows="8" cols="80">20190202	7	1500.20
 20190202	7	1500.20
 20190202	7	1500.20</textarea>
 
 
-<textarea id="txtarea1" rows="8" cols="80"></textarea>
+<textarea id="txtarea1" rows="8" cols="80"></textarea><br>
+<button onclick="myFunction()">Convert</button>
 <script>
 
 function myFunction(){
