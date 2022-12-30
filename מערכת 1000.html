@@ -10,12 +10,17 @@ button{
     background-color: orange;
     height: 40px;
     font-size: larger;
+    
 }
 textarea{
     color: white;
     width: 50%;
     padding: 0%;
+    border-color: white;
     margin: 0%;
+    border-width: 1px;
+    border-style: double;
+ 
 }
 h1{
     width: 50%;
@@ -27,13 +32,15 @@ background-color: orange;
     visibility: hidden;
 }
 #teknekoyem{
+  border-style: double;
     width: 50%;  
     color: white;
     font-size: large;
     padding: 0%;
     margin: 0%;
-    border: 0;
-    text-align: center;
+   border-color: white;
+     text-align: center;
+     border-width: 1px;
 }
 
 </style>
@@ -42,9 +49,10 @@ background-color: orange;
     <h1>מערכת 1000</h1>
     <input id="teknekoyem" type="text" placeholder="תיק ניכויים"><br>
     <textarea id="txtarea" rows="30" cols="20"></textarea>
-  <textarea id="txtarea1" rows="1" cols="1"></textarea><br>
+
 <!-- <button onclick="myFunction()">Try it</button> -->
 <button type="button" onclick="download()">Save</button>
+<textarea id="txtarea1" rows="1" cols="1"></textarea><br>
   </head>
   <body>
     <script type="text/javascript">
