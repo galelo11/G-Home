@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        *{
+            background-color: #101820FF;
+            color: white;
+        }
+        h1 {
+            color: #FEE715FF;
+            width: 70%;
+            text-align: center;
+            display: block;
+            margin-left: auto;
+  margin-right: auto;
+        }
+        textarea{
+            display: block;
+            width: 70%;
+            margin-left: auto;
+  margin-right: auto;
+        }
+        input{
+            width: 70%;
+            display: block;
+            margin-left: auto;
+  margin-right: auto;
+ color :#101820FF;
+font-size: larger;
+background-color: #FEE715FF;
+border-color:#101820FF ;
+        }
+    </style>
+  
+
+    <h1>Input</h1>
+    <textarea name="" id="mydata" cols="150" rows="10">
+O514615467202302120230313+00003019332+000513296+00000000000+000000000000001071-00000000125+000468696+000000071000000095+00000044529
+L000000000202302010000300000801000000207+0000001218000000000
+L000000000202302010000300000802000000076+0000000450000000000
+L000000000202302010000300000803000000307+0000001806000000000</textarea>
+<input type="button" onclick="Convert()" value="Convert"><br>
+    <h1>OutPut</h1>
+    <textarea name="" id="myoutput" cols="150" rows="10"></textarea>
+</body>
+
+<script>
+
+    function Convert(){
+const str = document.getElementById("mydata").value
+const str1 = document.getElementById("myoutput")
+const result = str.split(/\r?\n/);
+console.log(result)
+result.forEach(myFunction);
+}
+function myFunction(item, index) {
+    if (index ==0){
+      
+results = "סוג :	"+  (item.slice(0, 1)) +"\n";
+results +=" עוסק מורשה :	"+  (item.slice(1, 10))+"\n";
+results += "חודש ושנת הדווח :	"+ (item.slice(10, 17))+"\n";
+results +="תאריך יצירת הקובץ :	"+ (item.slice(17, 25))+"\n";
+results +="עסקאות חייבות (לא כולל מעמ) :	"+ item.slice(25, 26) +parseInt(item.slice(26, 38),"")+"\n";
+results += "המעמ בעסקאות חייבות :	"+item.slice(37, 38)+parseInt(item.slice(38, 47),"")+"\n";
+results += "? :	"+item.slice(47, 48)+parseInt(item.slice(48, 59),"")+"\n";
+results += "כמות רשומות עסקאות :	"+item.slice(59, 60)+parseInt(item.slice(60, 78),"")+"\n";
+results +="עסקאות פטורות :	"+item.slice(78, 79)+parseInt(item.slice(79, 90),"")+"\n";
+results +="מעמ תשומות :	"+ item.slice(90, 91)+parseInt(item.slice(91, 100),"")+"\n";
+results +="מעמ תשומות ציוד :	"+ item.slice(100, 101)+parseInt(item.slice(101, 110),"")+"\n";
+results +="כמות רשומות תשומות  :	"+ parseInt(item.slice(110, 119),"")+"\n";
+results +="הסכום לתשלום/החזר :	"+ item.slice(119, 120)+ parseInt(item.slice(120, 131),"")+"\n";
+    }
+    if(index >0 ){
+
+    
+results =  (item.slice(0, 1)) +"	";
+results +=  (item.slice(1, 10))+"	";
+results +=  (item.slice(10, 18))+"	";
+results += parseInt(item.slice(18, 31),"")+"	";
+results += parseInt(item.slice(32, 40),"")+"	";
+results +=  item.slice(40, 41) + parseInt(item.slice(41, 51),"")+"\n";
+}
+myoutput.value += results
+}
+
+</script>
+</html>
