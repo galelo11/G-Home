@@ -11,6 +11,10 @@
     .g-cards{
 width:100%;
 }
+#Lock{
+    display: none;
+}
+
 
 }  
         *{
@@ -61,20 +65,42 @@ width:24vw;
     color: rgb(7, 190, 7);
     
 }
-#flex{
+#flex {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-evenly;
 }
 
+
+#Lock{
+    position: absolute;
+       color: red;
+
+    height: 98%;
+    width: 98%;
+    background-color: black;
+    border: 0;
+}
+.on{
+    display: flex;
+
+}
+.off{
+    display: none;
+}
     </style>
+
 </head>
-<body>
 
- 
+<body >
 
-<div id="flex">
+    <div id="Lock"class="on">
+<h1>System Locked</h1> <h1 onclick="TryUnlock()">!</h1>
+    </div>
+  
+
+<div id="flex" >
 <div class="g-cards">
 <h1>חשבשבת</h1>
 <a href="הוצ' משכורת עצמאית.html">הוצ' משכורת </a>    
@@ -143,6 +169,18 @@ width:24vw;
         <a href="https://www.bankhapoalim.co.il/he/login">הפועלים פרטי</a>
         <a href="https://hb2.bankleumi.co.il/H/Login.html">לאומי עסקי</a>
         </div>
+
+        <script>
+            g1 = 5
+          function  TryUnlock(){
+            g1 -=1
+                var element = document.getElementById("Lock");
+                if (g1 <1) {
+ if  (element.classList.contains("on"))
+   element.classList.toggle("off");
+}
+            }
+        </script>
 </div>
 </body>
 </html>
