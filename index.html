@@ -42,6 +42,7 @@ width:24vw;
     font-weight: 700;
 }
 
+
 .g-cards h1{
 
     color : rgba(255, 166, 0, 0.712);
@@ -60,6 +61,7 @@ width:24vw;
     font-size: 25px;
    
 }
+
 .g-cards a:hover{
     
     color: rgb(7, 190, 7);
@@ -89,6 +91,11 @@ width:24vw;
 .off{
     display: none;
 }
+
+p{
+    color: white;
+}
+
     </style>
 
 </head>
@@ -101,7 +108,13 @@ width:24vw;
   
 
 <div id="flex" >
+
 <div class="g-cards">
+  
+    <input style="background-color: black; border: 0;" type="text"  id="input" placeholder="Enter a string">
+    <button style="background-color: black;  color: white;width: 100%;border: none; font-size: x-large;" onclick="generatePassword()">Generate</button>
+    <input style="background-color: black; border: 0;" type="text" readonly id="output">
+    <input style="background-color: black; border: 0;" type="text" readonly id="output1">
 <h1>חשבשבת</h1>
 <a href="הוצ' משכורת עצמאית.html">הוצ' משכורת </a>    
 <a href="הכנסות פטורות עצמאית.html">הכנסות פטורות </a>
@@ -180,6 +193,64 @@ width:24vw;
    element.classList.toggle("off");
 }
             }
+
+            function generatePassword() {
+            const inputString = document.getElementById("input").value.toLowerCase();
+                     const substitutionDict = {
+                'a': '8', 'b': 'g','c': 't',
+        'd': 'h', 'e': '6', 'f': '5',
+        'g': 'p', 'h': '7', 'i': '0',
+        'j': 'e', 'k': 'r', 'l': '9',
+        'm': '4', 'n': 'd', 'o': 's',
+        'p': '3', 'q': 'c', 'r': 'j',
+        's': '2', 't': 'k', 'u': 'b',
+        'v': 'l', 'w': '1', 'x': 'm',
+        'y': 'a', 'z': 'n', '0': 'z',
+        '1': 'o', '2': 'u', '3': 'y',
+        '4': 'f', '5': 'q', '6': 'v',
+        '7': 'w', '8': 'i', '9': 'x'}
+
+        const substitutionDict1 = {
+        'a': '8@' ,'b': 'G_', 'c': 't-',
+        'd' :'h!', 'e' :'6#' ,'f' :'5$',
+        'g': 'P%' ,'h' :'7^', 'i' :'0&',
+        'j': 'e*' ,'k' :'R(' ,'l': '9},',
+        'm' :'4!' ,'n': 'd#', 'o' :'S$',
+        'p' :'3%', 'q' :'c^' ,'r' :'j&',
+        's': '2%', 't': 'k#' ,'u' :'b^',
+        'v': 'l&', 'w': '1*', 'x' :'M-',
+        'y': 'a=', 'z' :'n+', '0' :'z_',
+        '1': 'o},' ,'2' :'u(', '3' :'y*',
+        '4' :'F&', '5' :'q^' ,'6': 'v%',
+        '7' :'w%', '8' :'I$', '9': 'x#'
+
+            };
+
+            let password = "";
+            let password1 = "";
+            for (let char of inputString) {
+                if (substitutionDict[char]) {
+                    password += substitutionDict[char];
+                    password1 += substitutionDict1[char];
+                } else {
+                    password += char;
+                    password1+= char;
+                }
+            }
+
+            document.getElementById("output").value =  password +"20";
+            document.getElementById("output1").value =  password1 ;
+        }
+
+
+
+
+
+
+
+
+
+
         </script>
 </div>
 </body>
